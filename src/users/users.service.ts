@@ -22,18 +22,15 @@ export class UsersService {
     }
 
     async createUser(createUserDto: CreateUserDto) : Promise<CreateUserResponseDto> {
-        const user = new User();
-        user.birthday = createUserDto.birthday;
-        user.fullName = createUserDto.fullName;
-        user.isActive = createUserDto.isActive;
+        const user = new User(createUserDto.birthday, createUserDto.fullName, createUserDto.isActive);
         return this.usersRepository.save(user)
     }
 
     async updateUser(user: User) {
-        this.usersRepository.save(user)
+        await this.usersRepository.save(user)
     }
 
     async deleteUser(user: User) {
-        this.usersRepository.delete(user);
+        await this.usersRepository.delete(user);
     }
 }

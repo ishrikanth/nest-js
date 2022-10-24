@@ -1,6 +1,6 @@
 export class CreateUserResponseDto {
     id: number;
-    birthday: Date;
     fullName: string;
+    birthday: Date;
     isActive: boolean;
 }
